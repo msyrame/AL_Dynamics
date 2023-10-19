@@ -1,10 +1,10 @@
-pageextension 50415 "Sales Order Ext" extends "Sales Order"
+pageextension 50415 "ITX Sales Order Ext" extends "Sales Order"
 {
     layout
     {
-        addafter("Control1900201301")
+        addafter("General")
         {
-            group("WMS Info")
+            group("WMS Infos")
             {
                 field("WMS Status"; Rec."ITX WMS Status")
                 {
@@ -13,19 +13,23 @@ pageextension 50415 "Sales Order Ext" extends "Sales Order"
                 field("WMS Date Status"; Rec."ITX Date WMS Status")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("WMS Last Descent"; Rec."ITX Date Last Descent")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
             }
         }
-
     }
 
     actions
     {
-
+        modify(reopen)
+        {
+            enabled = false;
+        }
     }
 
 

@@ -9,7 +9,7 @@ enum 50401 "ITX WMS Status"
 
     value(1; ToSend)
     {
-        Caption = 'À envoyer au WMS';
+        Caption = 'A envoyer au WMS';
     }
 
 }

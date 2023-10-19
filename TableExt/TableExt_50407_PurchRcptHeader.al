@@ -4,7 +4,7 @@ tableextension 50407 "ITX Purch. Rcpt. Header Ext" extends "Purch. Rcpt. Header"
     {
         field(50401; "ITX Maximal boarding date"; Date)
         {
-            Caption = 'Date maximale embarquement demandée';
+            Caption = 'LSD';
         }
 
         field(50402; "ITX Container"; code[50])

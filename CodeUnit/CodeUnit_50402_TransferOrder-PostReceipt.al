@@ -1,6 +1,6 @@
 
 
-codeunit 50402 "TransferOrder-Post Rcpt Ext"
+codeunit 50402 "ITX TransferOrder-Post Rcpt"
 {
 
     [EventSubscriber(ObjectType::Codeunit, CodeUnit::"TransferOrder-Post Receipt", 'OnBeforeTransRcptHeaderInsert', '', false, false)]

@@ -60,22 +60,14 @@ tableextension 50403 "ITX Transfer Line Ext" extends "Transfer Line"
 
         field(50410; "ITX Maximal boarding date"; Date)
         {
-            Caption = 'Date maximale embarquement demandée';
+            Caption = 'LSD';
             Editable = false;
         }
 
         field(50411; "ITX Requested Shipment Date"; Date)
         {
-            Caption = 'Date d''expédition demandée';
+            Caption = 'RSD';
             Editable = false;
-        }
-
-        field(50412; "ITX Unit Volume"; decimal)
-        {
-            Caption = 'Volume unitaire';
-            DecimalPlaces = 0 : 5;
-            FieldClass = FlowField;
-            CalcFormula = lookup(Item."Unit Volume" WHERE("No." = field("Item No.")));
         }
     }
 
@@ -85,7 +77,7 @@ tableextension 50403 "ITX Transfer Line Ext" extends "Transfer Line"
     /// <returns></returns>
     procedure CalcTotalVolume(): Decimal
     begin
-        exit("ITX Unit Volume" * Quantity);
+        exit("Unit Volume" * Quantity);
     end;
 
 }

@@ -6,8 +6,6 @@ tableextension 50406 "ITX TransfertReceiptLine Ext" extends "Transfer Receipt Li
         field(50401; "ITX Nomenclature"; code[20])
         {
             Caption = 'Nomenclature';
-            FieldClass = FlowField;
-            CalcFormula = lookup(Item."Tariff No." WHERE("No." = field("Item No.")));
         }
 
         field(50402; "ITX Container"; code[50])
@@ -60,14 +58,6 @@ tableextension 50406 "ITX TransfertReceiptLine Ext" extends "Transfer Receipt Li
             Caption = 'Date d''expédition demandée';
         }
 
-        field(50412; "ITX Unit Volume"; Decimal)
-        {
-            Caption = 'Unit Volume';
-            DecimalPlaces = 0 : 5;
-            FieldClass = FlowField;
-            CalcFormula = lookup(Item."Unit Volume" WHERE("No." = field("Item No.")));
-        }
-
     }
 
     /// <summary>
@@ -76,6 +66,6 @@ tableextension 50406 "ITX TransfertReceiptLine Ext" extends "Transfer Receipt Li
     /// <returns></returns>
     procedure CalcTotalVolume(): Decimal
     begin
-        exit("ITX Unit Volume" * Quantity);
+        exit("Unit Volume" * Quantity);
     end;
 }

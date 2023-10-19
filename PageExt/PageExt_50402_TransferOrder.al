@@ -1,4 +1,4 @@
-pageextension 50402 "Transfer Order Ext" extends "Transfer Order"
+pageextension 50402 "ITX Transfer Order Ext" extends "Transfer Order"
 {
     layout
     {
@@ -10,10 +10,10 @@ pageextension 50402 "Transfer Order Ext" extends "Transfer Order"
                 ApplicationArea = All;
             }
 
-            field("Total volume"; Rec."ITX Total volume")
-            {
-                ApplicationArea = All;
-            }
+            // field("Total volume"; Rec."ITX Total volume")
+            // {
+            //     ApplicationArea = All;
+            // }
 
             field("Port d'arrivée"; Rec."ITX Arrival Port")
             {
@@ -63,6 +63,27 @@ pageextension 50402 "Transfer Order Ext" extends "Transfer Order"
             field("Date départ LHTE"; Rec."ITX LHTE Departure Date")
             {
                 ApplicationArea = All;
+            }
+        }
+
+        addafter("General")
+        {
+            group("WMS Infos")
+            {
+                field("WMS Status"; Rec."ITX WMS Status")
+                {
+                    ApplicationArea = All;
+                }
+                field("WMS Date Status"; Rec."ITX Date WMS Status")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("WMS Last Descent"; Rec."ITX Date Last Descent")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
             }
         }
     }

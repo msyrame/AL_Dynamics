@@ -1,4 +1,4 @@
-codeunit 50401 "TransferOrder-Post Shpt Ext"
+codeunit 50401 "ITX TransferOrder-Post Shpt"
 {
 
     [EventSubscriber(ObjectType::Codeunit, CodeUnit::"TransferOrder-Post Shipment", 'OnBeforeInsertTransShptHeader', '', false, false)]

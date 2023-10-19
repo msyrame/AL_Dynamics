@@ -24,6 +24,13 @@ tableextension 50441 "ITX Sales Line Ext" extends "Sales Line"
             FieldClass = FlowField;
             CalcFormula = lookup("Item Reference"."Reference No." WHERE("Item No." = field("No."), "Reference Type No." = field("Sell-to Customer No.")));
         }
+
+        field(50404; "ITX Warehouse"; code[30])
+        {
+            Caption = 'Entrepôt';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Location."ITX Warehouse" WHERE("Code" = field("Location Code")));
+        }
     }
 
     procedure CalcUnitPriceWithDiscount(): Decimal

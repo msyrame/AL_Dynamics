@@ -1,4 +1,4 @@
-codeunit 50406 "PurchHeader To PurchRcptHeader"
+codeunit 50406 "ITX PrchHeaderToPrchRcptHeader"
 {
 
     [EventSubscriber(ObjectType::Codeunit, CodeUnit::"Purch.-Post", 'OnBeforePurchRcptHeaderInsert', '', false, false)]
@@ -7,5 +7,8 @@ codeunit 50406 "PurchHeader To PurchRcptHeader"
         PurchRcptHeader."ITX Vendor Invoice No." := PurchaseHeader."Vendor Invoice No.";
         PurchRcptHeader."ITX Assigned User ID" := PurchaseHeader."Assigned User ID";
         PurchRcptHeader."ITX Requested Shipment Date" := PurchaseHeader."ITX Requested Shipment Date";
+        PurchRcptHeader."ITX Maximal boarding date" := PurchaseHeader."ITX Maximal boarding date";
+        PurchRcptHeader."Transport Method" := PurchaseHeader."Transport Method";
+        PurchRcptHeader."Your Reference" := PurchaseHeader."Your Reference";
     end;
 }

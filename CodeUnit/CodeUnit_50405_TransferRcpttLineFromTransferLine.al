@@ -1,10 +1,11 @@
-codeunit 50405 "TrfRcptLine From TrfLine"
+codeunit 50405 "ITX TrfRcptLine From TrfLine"
 {
 
 
     [EventSubscriber(ObjectType::Table, DataBase::"Transfer Receipt Line", 'OnAfterCopyFromTransferLine', '', false, false)]
     local procedure OnAfterCopyFromTransferLine(var TransferReceiptLine: Record "Transfer Receipt Line"; TransferLine: Record "Transfer Line")
     begin
+        TransferReceiptLine."ITX Nomenclature" := TransferLine."ITX Nomenclature";
         TransferReceiptLine."ITX Container" := TransferLine."ITX Container";
         TransferReceiptLine."ITX Boarding Date" := TransferLine."ITX Boarding Date";
         TransferReceiptLine."ITX Your reference" := TransferLine."ITX Your reference";
@@ -15,5 +16,6 @@ codeunit 50405 "TrfRcptLine From TrfLine"
         TransferReceiptLine."ITX Buy-from Vendor No." := TransferLine."ITX Buy-from Vendor No.";
         TransferReceiptLine."ITX Maximal boarding date" := TransferLine."ITX Maximal boarding date";
         TransferReceiptLine."ITX Requested Shipment Date" := TransferLine."ITX Requested Shipment Date";
+        TransferReceiptLine."Unit Volume" := TransferLine."Unit Volume";
     end;
 }

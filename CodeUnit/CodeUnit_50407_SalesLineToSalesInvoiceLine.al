@@ -1,4 +1,4 @@
-codeunit 50407 "SalesLines To SalesInvoiceLine"
+codeunit 50407 "ITX SalesLinesToSalesInvcLine"
 {
 
     [EventSubscriber(ObjectType::Table, DataBase::"Sales Invoice Line", 'OnAfterInitFromSalesLine', '', false, false)]

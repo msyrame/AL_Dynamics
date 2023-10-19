@@ -1,4 +1,4 @@
-pageextension 50404 "PostedPurchaseRcpt Subform Ext" extends "Posted Purchase Rcpt. Subform"
+pageextension 50404 "ITX PostedPrchRcpt Subform Ext" extends "Posted Purchase Rcpt. Subform"
 {
     layout
     {

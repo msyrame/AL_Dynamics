@@ -1,4 +1,4 @@
-pageextension 50417 "PostedPurchaseReceipts Ext" extends "Posted Purchase Receipts"
+pageextension 50416 "ITX PostedPurchaseReceipts Ext" extends "Posted Purchase Receipts"
 {
     layout
     {

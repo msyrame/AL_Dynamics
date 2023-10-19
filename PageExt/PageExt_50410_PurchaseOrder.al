@@ -1,4 +1,4 @@
-pageextension 50410 "Purchase Order Ext" extends "Purchase Order"
+pageextension 50410 "ITX Purchase Order Ext" extends "Purchase Order"
 {
     layout
     {
@@ -18,7 +18,7 @@ pageextension 50410 "Purchase Order Ext" extends "Purchase Order"
             }
         }
 
-        addafter("Prepayment")
+        addafter(General)
         {
             group("WMS Info")
             {
@@ -29,10 +29,12 @@ pageextension 50410 "Purchase Order Ext" extends "Purchase Order"
                 field("WMS Date Status"; Rec."ITX Date WMS Status")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("WMS Last Descent"; Rec."ITX Date Last Descent")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
             }
         }

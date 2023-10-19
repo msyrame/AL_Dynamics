@@ -1,4 +1,4 @@
-codeunit 50403 "TransferOrder LineFromReceipt"
+codeunit 50403 "ITX TrfOrderLineFromReceipt"
 {
 
     [EventSubscriber(ObjectType::Table, Database::"Transfer Header", 'OnAddTransferLineFromReceiptLineOnBeforeTransferLineInsert', '', false, false)]

@@ -1,4 +1,4 @@
-pageextension 50406 "PostedTransferRcpt Subform Ext" extends "Posted Transfer Rcpt. Subform"
+pageextension 50406 "ITX PostedTrfRcpt Subform Ext" extends "Posted Transfer Rcpt. Subform"
 {
     layout
     {
@@ -92,7 +92,7 @@ pageextension 50406 "PostedTransferRcpt Subform Ext" extends "Posted Transfer Rc
 
         addlast(Control1)
         {
-            field("ITX Unit Volume"; Rec."ITX Unit Volume")
+            field("ITX Unit Volume"; Rec."Unit Volume")
             {
                 ApplicationArea = all;
             }
@@ -100,13 +100,57 @@ pageextension 50406 "PostedTransferRcpt Subform Ext" extends "Posted Transfer Rc
 
         addlast(Control1)
         {
-            field("ITX Total Volume"; Rec.CalcTotalVolume())
+            field("Volume"; Rec.CalcTotalVolume())
             {
                 ApplicationArea = all;
+            }
+        }
+
+        addafter(Control1)
+        {
+            group(Control2)
+            {
+                ShowCaption = false;
+                field("Total Volume"; TotalVolume)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
             }
         }
     }
 
     var
         myInt: Integer;
+        TotalVolume: decimal;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        UpdateTotals();
+    end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        UpdateTotals();
+    end;
+
+    trigger OnDeleteRecord(): Boolean
+    begin
+        UpdateTotals();
+    end;
+
+    procedure UpdateTotals()
+    var
+        TransferReceiptLine: Record "Transfer Receipt Line";
+    begin
+        TotalVolume := 0;
+        TransferReceiptLine.Reset();
+        TransferReceiptLine.CopyFilters(rec);
+
+        IF TransferReceiptLine.FindSet() THEN BEGIN
+            REPEAT
+                TotalVolume += TransferReceiptLine.CalcTotalVolume();
+            UNTIL TransferReceiptLine.NEXT = 0;
+        end
+    end;
 }

@@ -1,4 +1,4 @@
-pageextension 50405 "PostedTransferShpt Subform Ext" extends "Posted Transfer Shpt. Subform"
+pageextension 50405 "ITX PostedTrfShpt Subform Ext" extends "Posted Transfer Shpt. Subform"
 {
     layout
     {
@@ -92,7 +92,7 @@ pageextension 50405 "PostedTransferShpt Subform Ext" extends "Posted Transfer Sh
 
         addafter(Quantity)
         {
-            field("ITX Unit Volume"; Rec."ITX Unit Volume")
+            field("ITX Unit Volume"; Rec."Unit Volume")
             {
                 ApplicationArea = all;
             }
@@ -100,9 +100,22 @@ pageextension 50405 "PostedTransferShpt Subform Ext" extends "Posted Transfer Sh
 
         addafter("ITX Unit Volume")
         {
-            field("Volume total"; Rec.CalcTotalVolume())
+            field("Volume"; Rec.CalcTotalVolume())
             {
                 ApplicationArea = all;
+            }
+        }
+
+        addafter(Control1)
+        {
+            group(Control2)
+            {
+                ShowCaption = false;
+                field("Total Volume"; TotalVolume)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
             }
         }
     }
@@ -114,4 +127,35 @@ pageextension 50405 "PostedTransferShpt Subform Ext" extends "Posted Transfer Sh
 
     var
         myInt: Integer;
+        TotalVolume: decimal;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        UpdateTotals();
+    end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        UpdateTotals();
+    end;
+
+    trigger OnDeleteRecord(): Boolean
+    begin
+        UpdateTotals();
+    end;
+
+    procedure UpdateTotals()
+    var
+        TransferShipmentLine: Record "Transfer Shipment Line";
+    begin
+        TotalVolume := 0;
+        TransferShipmentLine.Reset();
+        TransferShipmentLine.CopyFilters(rec);
+
+        IF TransferShipmentLine.FindSet() THEN BEGIN
+            REPEAT
+                TotalVolume += TransferShipmentLine.CalcTotalVolume();
+            UNTIL TransferShipmentLine.NEXT = 0;
+        end
+    end;
 }

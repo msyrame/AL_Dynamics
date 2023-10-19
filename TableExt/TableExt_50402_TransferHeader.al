@@ -70,5 +70,26 @@ tableextension 50402 "ITX Transfer Header Ext" extends "Transfer Header"
             Caption = 'Date de départ LHTE';
         }
 
+        field(50413; "ITX WMS Status"; Enum "ITX WMS Status")
+        {
+            Caption = 'Statut WMS';
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                "ITX Date WMS Status" := CurrentDateTime;
+            end;
+        }
+
+        field(50414; "ITX Date WMS Status"; DateTime)
+        {
+            Caption = 'Date moditication statut';
+        }
+
+        field(50415; "ITX Date Last Descent"; DateTime)
+        {
+            Caption = 'Date dernière descente';
+        }
+
     }
 }

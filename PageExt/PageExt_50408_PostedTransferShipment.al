@@ -1,4 +1,4 @@
-pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Shipment"
+pageextension 50408 "ITX Posted Trf Shipment Ext" extends "Posted Transfer Shipment"
 {
     layout
     {
@@ -7,6 +7,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX Arrival Port"; Rec."ITX Arrival Port")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -15,6 +16,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX Dockside view date"; Rec."ITX Dockside view date")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -23,6 +25,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX Port terminal exit date"; Rec."ITX Port terminal exit date")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -31,6 +34,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX Post Delivery Operator"; Rec."ITX Post Delivery Operator")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -39,6 +43,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX Starting ship"; Rec."ITX Starting ship")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -47,6 +52,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX Container type"; Rec."ITX Container type")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -55,6 +61,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX Arrival ship"; Rec."ITX Arrival ship")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -63,6 +70,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX Arrival Date"; Rec."ITX Arrival Date")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -71,6 +79,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX LHTE Arrival Date"; Rec."ITX LHTE Arrival Date")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 
@@ -79,6 +88,7 @@ pageextension 50408 "Posted Transfer Shipment Ext" extends "Posted Transfer Ship
             field("ITX LHTE Departure Date"; Rec."ITX LHTE Departure Date")
             {
                 ApplicationArea = all;
+                Editable = false;
             }
         }
 

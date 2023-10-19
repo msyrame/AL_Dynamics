@@ -28,13 +28,11 @@ tableextension 50410 "ITX Purchase Header Ext" extends "Purchase Header"
         field(50409; "ITX Date WMS Status"; DateTime)
         {
             Caption = 'Date moditication statut';
-            Editable = false;
         }
 
         field(50410; "ITX Date Last Descent"; DateTime)
         {
             Caption = 'Date dernière descente';
-            Editable = false;
         }
 
     }

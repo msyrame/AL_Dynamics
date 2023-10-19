@@ -1,7 +1,16 @@
-pageextension 50403 "Transfer Order Subform Ext" extends "Transfer Order Subform"
+pageextension 50403 "ITX Transfer Order Subform Ext" extends "Transfer Order Subform"
 {
     layout
     {
+        modify(Quantity)
+        {
+            trigger OnAfterValidate()
+            begin
+                CurrPage.Update(true);
+                UpdateTotals();
+            end;
+        }
+
         addafter(Description)
         {
             field("ITX Nomenclature"; Rec."ITX Nomenclature")
@@ -96,21 +105,35 @@ pageextension 50403 "Transfer Order Subform Ext" extends "Transfer Order Subform
 
         addafter("ITX Maximal boarding date")
         {
-            field("ITX Unit Volume"; Rec."ITX Unit Volume")
+            field("Unit Volume"; Rec."Unit Volume")
             {
                 ApplicationArea = all;
                 Editable = false;
             }
         }
 
-        addafter("ITX Unit Volume")
+        addafter(Quantity)
         {
-            field("Total Volume"; Rec.CalcTotalVolume())
+            field("Volume"; Rec.CalcTotalVolume())
             {
                 ApplicationArea = all;
                 Editable = false;
             }
         }
+
+        addafter(Control1)
+        {
+            group(Control2)
+            {
+                ShowCaption = false;
+                field("Total Volume"; TotalVolume)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+            }
+        }
+
     }
 
 
@@ -120,4 +143,35 @@ pageextension 50403 "Transfer Order Subform Ext" extends "Transfer Order Subform
 
     var
         myInt: Integer;
+        TotalVolume: decimal;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        UpdateTotals();
+    end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        UpdateTotals();
+    end;
+
+    trigger OnDeleteRecord(): Boolean
+    begin
+        UpdateTotals();
+    end;
+
+    procedure UpdateTotals()
+    var
+        TransferLine: Record "Transfer Line";
+    begin
+        TotalVolume := 0;
+        TransferLine.Reset();
+        TransferLine.CopyFilters(rec);
+
+        IF TransferLine.FindSet() THEN BEGIN
+            REPEAT
+                TotalVolume += TransferLine.CalcTotalVolume();
+            UNTIL TransferLine.NEXT = 0;
+        end
+    end;
 }

@@ -6,8 +6,6 @@ tableextension 50405 "ITX TransfertShipmentLine Ext" extends "Transfer Shipment 
         field(50401; "ITX Nomenclature"; code[20])
         {
             Caption = 'Nomenclature';
-            FieldClass = FlowField;
-            CalcFormula = lookup(Item."Tariff No." WHERE("No." = field("Item No.")));
         }
 
         field(50402; "ITX Container"; code[50])
@@ -59,15 +57,6 @@ tableextension 50405 "ITX TransfertShipmentLine Ext" extends "Transfer Shipment 
         {
             Caption = 'Date d''expédition demandée';
         }
-
-
-        field(50412; "ITX Unit Volume"; Decimal)
-        {
-            Caption = 'Volume unitaire';
-            DecimalPlaces = 0 : 5;
-            FieldClass = FlowField;
-            CalcFormula = lookup(Item."Unit Volume" WHERE("No." = field("Item No.")));
-        }
     }
 
     /// <summary>
@@ -76,7 +65,7 @@ tableextension 50405 "ITX TransfertShipmentLine Ext" extends "Transfer Shipment 
     /// <returns></returns>
     procedure CalcTotalVolume(): Decimal
     begin
-        exit("ITX Unit Volume" * Quantity);
+        exit("Unit Volume" * Quantity);
     end;
 
 }
